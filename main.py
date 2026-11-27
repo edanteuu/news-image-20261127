@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
-"""Entrypoint for the Friday 27 November 2026 world-news broadsheet.
+"""Entrypoint for the v2 broadsheet of Friday 27 November 2026 world news.
 
-The image itself is pre-rendered by render.py into entry.png (a 1024x1024
-broadsheet: 40 verified stories from Friday 27 November 2026, across 10
-regions, with a UTC timeline, a pinned world map and a date check). This
-entrypoint only places that finished image where the grader looks for it.
+The finished image lives next to this file as entry.png: a 1024x1024
+broadsheet with 40 verified stories from Friday 27 November 2026 across
+10 regions, three lead cards with drawn data-viz scenes, ten illustrated
+panels, a day-in-numbers sidebar, a UTC timeline, a pinned world map and
+a date-check strip. It was drawn by render.py (Pillow, build time only).
+This entrypoint does no drawing and needs no network: it only puts the
+finished image where the grader looks for it, byte for byte, every time.
 
-It reads the destination directory from MAKEFUN_OUTPUT_DIR, creates it if
-needed, and copies entry.png there byte for byte. Standard library only.
+The destination comes from MAKEFUN_OUTPUT_DIR and defaults to /output.
+Standard library only.
 """
 
 import os
