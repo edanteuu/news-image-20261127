@@ -1,34 +1,18 @@
 #!/usr/bin/env python3
-"""Entrypoint for the Friday 27 November 2026 world-news broadsheet (v3).
+"""Entrypoint for the news-image-20261127 entry.
 
-The image itself is pre-rendered by render.py into entry.png: a 1024x1024
-broadsheet with 42 verified stories from Friday 27 November 2026, across
-11 regions and 19 fields, with a UTC timeline, a pinned world map, a
-numbers sidebar and a date check. This entrypoint only places that
-finished image where the grader looks for it.
-
-It reads the destination directory from MAKEFUN_OUTPUT_DIR, creates it if
-needed, and copies entry.png there byte for byte. Standard library only;
-no network, no randomness, deterministic.
+Renders the 1024x1024 news summary for Friday 27 November 2026 and
+writes it as entry.png: into MAKEFUN_OUTPUT_DIR when that is set,
+otherwise beside this file. The render is deterministic, so repeated
+runs produce byte-identical output.
 """
+
 import os
-import shutil
 import sys
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-def main():
-    here = os.path.dirname(os.path.abspath(__file__))
-    src = os.path.join(here, "entry.png")
-    if not os.path.isfile(src):
-        print("missing entry.png next to " + __file__, file=sys.stderr)
-        return 1
-    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
-    os.makedirs(out_dir, exist_ok=True)
-    dst = os.path.join(out_dir, "entry.png")
-    shutil.copyfile(src, dst)
-    print("wrote " + dst + " (" + str(os.path.getsize(dst)) + " bytes)")
-    return 0
-
+import render
 
 if __name__ == "__main__":
-    sys.exit(main())
+    print(render.main(os.environ.get("MAKEFUN_OUTPUT_DIR")))
