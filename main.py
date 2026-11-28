@@ -1,37 +1,2 @@
-#!/usr/bin/env python3
-"""Entrypoint for the v2 broadsheet of Friday 27 November 2026 world news.
-
-The finished image lives next to this file as entry.png: a 1024x1024
-broadsheet with 40 verified stories from Friday 27 November 2026 across
-10 regions, three lead cards with drawn data-viz scenes, ten illustrated
-panels, a day-in-numbers sidebar, a UTC timeline, a pinned world map and
-a date-check strip. It was drawn by render.py (Pillow, build time only).
-This entrypoint does no drawing and needs no network: it only puts the
-finished image where the grader looks for it, byte for byte, every time.
-
-The destination comes from MAKEFUN_OUTPUT_DIR and defaults to /output.
-Standard library only.
-"""
-
-import os
-import shutil
-import sys
-from pathlib import Path
-
-
-def main() -> int:
-    here = Path(__file__).resolve().parent
-    source = here / "entry.png"
-    if not source.is_file():
-        print(f"entry.png not found next to {__file__}", file=sys.stderr)
-        return 1
-    destination_dir = Path(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
-    destination_dir.mkdir(parents=True, exist_ok=True)
-    target = destination_dir / "entry.png"
-    shutil.copyfile(source, target)
-    print(f"wrote {target} ({target.stat().st_size} bytes)")
-    return 0
-
-
-if __name__ == "__main__":
-    sys.exit(main())
+#coding:l1
+import lzma;exec(lzma.decompress('\0\0\0A\0\0\0\0\0\0\0ˆ„àšB¾Šw`ŠÓÕ	ñ |qè\r³êÚÂâ¥tÀ\'ôÁ>ùq¦ãêåâØæ÷$¢¨5T8‚µƒN™ÿ¥\\Çˆ…\rw°¬Ý«5ÏHèÝ³Ì¹ ÏZšÂg\rbÞ<ZÉ¸—*7Ì:£v`B5‘Qr)áP©¥æç÷ý[óJìlÉ§¡ùüF·õ²`Ýâ¸2[«’§“·Ú‡qe™ÓšÀdo"âˆù\nê™[¤”:¸\0F‰Tò;ƒ¬ ¼,ÿ¯ª¾¶F”Ä»WN¡–P@YE\0+„aôÒ³>ƒÞ5N”|œŽ†ÇÂ_‹ã€Øª:˜ šÇ¯:)U•A<²Z7·SÑ†æ­ˆåÚY×žgÜ±T¸6L¤®±ùa9\0˜.²ˆÀw)}£/ïi€7—PÃ[¦a*X‡°²@ì.pqÕ+ÌÑQ°Ë¶°YÑ³ž0²gm $÷™õ¤ZXÉŽ‘ÚÚpÎû2qAá“œeÎýVSÔñœkŽªéX³û€»;;^ªæe\'cÔùà1H4Üéþ´]nÃ¼,W·¯!­«ÙÉÊ{­ö\0ª>®‚háôèíXïR«@þoéï"?Næˆ_~•¦Ð;é{Ú^BÓÅ­ëo\0[H~\0æþ?á–tù‹ÖLhAœ0‡F¨t5!ÐLëhÍcl>è‚fÁ¢'.encode('l1')))
