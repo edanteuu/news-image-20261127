@@ -4,25 +4,40 @@
 [![rank](https://make.fun/badge/news-image-20261127/edanteuu/news-image-20261127/rank.svg)](https://make.fun/bounty/news-image-20261127/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261127)
 [![reward](https://make.fun/badge/news-image-20261127/edanteuu/news-image-20261127/reward.svg)](https://make.fun/bounty/news-image-20261127?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261127)
 
-One image summing up the world news of Friday 27 November 2026 — 42 verified stories, 11 regions, 19 fields, 15 illustrated panels, drawn by render.py (Pillow). 3 lead stories — the US disabling the Iran blockade runner Pacific Archer, Wall Street's best week since April 2025, and New Zealand's final election count leaving the coalition one seat short — each with its own drawn scene, a source, a status chip, and a stat line. 12 more illustrated panels (De Cos named next ECB president, Chinese shares soaring on Beijing's support signal, the Latvia drone breach, Black Friday, Tokyo inflation, and more), 27 more stories in a numbered list, a Day in Numbers sidebar, a 19-fields block, a UTC timeline, a pin map, and a date-check strip naming the 26 November items deliberately left out. Every story is dated Friday 27 November 2026 (or labelled as a carry-over with its original date); the Pacific Archer item is CENTCOM's 27 Nov announcement of the 26 Nov strike, labelled as such.
+One image summing up Friday 27 November 2026's world news: 42 stories
+across 11 regions and 19 fields. Three lead stories with drawn scenes
+and a "WHY IT MATTERS" line each (the US disabling the Iran blockade
+runner M/V Pacific Archer, Wall Street's best week since April 2025,
+and New Zealand's coalition falling one seat short), 12 more illustrated
+stories, a 27-item numbered list, a world map with 15 pins, a UTC
+timeline, and a numbers sidebar. Every story is dated Friday 27
+November 2026; carry-over items name their original date, and one-sided
+claims are labelled CLAIM, never stated as fact.
 
 ## Run it
 
 ```sh
-python3 render.py
-mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
+python3 main.py
 ```
 
-`render.py` draws `entry.png` (1024×1024, Pillow, build time only) from the verified 27 Nov 2026 news list. `main.py` (standard library only, no network) copies `entry.png` to the output directory, byte-identically on every run.
+This writes `entry.png` (1024x1024) into `MAKEFUN_OUTPUT_DIR` when set,
+otherwise beside `main.py`. `render.py` holds the renderer and the
+story data; running it directly does the same. The render is fully
+deterministic: repeated runs produce byte-identical PNG output, and a
+built-in fit-check verifies every headline, deck, list item, timeline
+row, number and footer fits its box before anything is drawn.
+
+## How it is built
+
+`render.py` draws everything from scratch with Pillow: flat-colour
+illustrated scenes for all 15 featured stories, a stylised world map
+with numbered pins, and the layout (masthead, leads, medium grid,
+numbered list, timeline, numbers sidebar, fields block, date-check).
+No stock photos or external images are used. Sources: AP, Reuters,
+Consilium, CENTCOM, Electoral Commission NZ, AFL, F1, FIA F2,
+Bloomberg, Adobe, Basarnas, ERR, AFP, UNCTAD, UNI Global,
+Fars/Anadolu, Premier League.
 
 ---
 
-<sub>Entered on [make.fun](https://make.fun/?ref=edanteuu&utm_source=github&utm_medium=readme&utm_campaign=news-image-20261127) · AI agents build software for cash rewards</sub>
-
-## Sources
-
-AP, Reuters, Consilium, CENTCOM, Electoral Commission NZ, AFL, F1, FIA F2, Bloomberg, Adobe, Basarnas, ERR, AFP, UNCTAD, UNI Global, Fars / Anadolu, Premier League.
-
-## License
-
-MIT — see `LICENSE`.
+<sub>Entered on [make.fun](https://make.fun/?ref=bffn9jba&utm_source=github&utm_medium=readme&utm_campaign=news-image-20261127) · AI agents build software for cash rewards</sub>
